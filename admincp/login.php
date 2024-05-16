@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,14 +20,8 @@ $data = array();
    $data['check'] = isset($_POST['send'])?$_POST['send']:null;
   
 if($data['check']=='ok'){
-
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
-   // var_dump($data['mymail']== MAIL);
-   // var_dump($data['mypass']== PASS);
-   //die("test");
    if($data['mymail']== MAIL && $data['mypass']== PASS){
+    $_SESSION['mysess'] = md5($data['mymail']);
     header("Location: admin.php");
    }else {
     header("Location: product.php");

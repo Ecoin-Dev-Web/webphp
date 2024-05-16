@@ -11,6 +11,7 @@ $multi = [
 ];
 ?>
 
+
 <h1> <?=$multi[$mylang]['welcom'] ?></h1>
 
 <li><a href="?lang=ar"><?=$multi[$mylang]['link_ar'] ?></a></li>
