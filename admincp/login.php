@@ -11,21 +11,43 @@ session_start();
 <body>
 
 <?php
-const MAIL = "admin@gmail.com";
-const PASS = 123;
+// const MAIL = "admin@gmail.com";
+// const PASS = 123;
 
+$users = [
+   ['a@a.a',123,1],
+   ['b@b.b',123,2],
+   ['c@c.c',123,1]
+];
+//in_array
 $data = array();
    $data['mymail'] = isset($_POST['mail'])?$_POST['mail']:null;
    $data['mypass'] = isset($_POST['pass'])?$_POST['pass']:null;
    $data['check'] = isset($_POST['send'])?$_POST['send']:null;
   
 if($data['check']=='ok'){
-   if($data['mymail']== MAIL && $data['mypass']== PASS){
-    $_SESSION['mysess'] = md5($data['mymail']);
-    header("Location: admin.php");
-   }else {
-    header("Location: product.php");
-   }
+    foreach($users as $user){
+        if($user[0]== $data['mymail'] && $user[1]== $data['mypass'] ){
+            $_SESSION['mysess'] = $data['mymail']; 
+            if($user[2]== 1) {
+                $_SESSION['role'] = 1;
+                    header("Location: 1.php");
+            }elseif($user[2]== 2){
+                $_SESSION['role'] = 2;
+                   header("Location: 2.php");
+            }else {
+                die("Not Sur");
+            }
+            break;
+        }  else {
+            header("Location: product.php");
+           }
+   
+//    if($data['mymail']== MAIL && $data['mypass']== PASS){
+//     $_SESSION['mysess'] = md5($data['mymail']);
+//     header("Location: admin.php");
+
+}
 }
    
 ?>
