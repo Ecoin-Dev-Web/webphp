@@ -10,16 +10,19 @@
 <?php
 $v = isset($_POST['send'])?$_POST['send']:NULL;
 const P  = 'up/';
+const MAX_UP= 2000000;
 if($v=='ok'){
 
-/*$file_name_p1 = 'product_'.time();
+$file_name_p1 = 'product_'.time();
 $file =  $_FILES['ecoin']['name']?$_FILES['ecoin']['name']:'default.pdf';
 $file_name_p2 = end(explode('.',$file));
 
 $file_name = $file_name_p1.'.'.$file_name_p2;
-
+$size  = $_FILES['ecoin']['size'];
+if($size<=MAX_UP)
 move_uploaded_file($_FILES['ecoin']['tmp_name'],P.$file_name);
-echo '<br>';*/
+else  echo "File Up to max";
+echo '<br>';
 echo '<pre>';
 print_r($_FILES);
 echo '</pre>';
@@ -28,7 +31,7 @@ echo '</pre>';
   <form action="" method="post" class="mb-3 row"  enctype="multipart/form-data">
   <div class="mb-3">
   <label for="formFile" class="form-label">Upload you File</label>
-  <input class="form-control" name="ecoin[]" type="file" multiple id="formFile">
+  <input class="form-control" name="ecoin" type="file" multiple id="formFile">
   <input type="hidden" name="send" value='ok'>
 </div>
 <button class="btn btn-primary btn-sm col-3 " type="submit" role="button"> Upload</button>
