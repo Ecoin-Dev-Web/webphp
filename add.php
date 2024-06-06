@@ -1,4 +1,17 @@
 
+
+<?php
+require_once('config.php');
+// get all Category
+$sql  = "SELECT * FROM cat ";
+$q = mysqli_query($connect,$sql);
+
+// get numbers of cat
+$count = mysqli_num_rows($q );
+/*  if($count>4)
+ header('Location:list.php') ; */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,5 +24,7 @@
         <input type="text" name="cat" >
         <button type="submit">Add</button>
     </form>
+
+
 </body>
 </html>
