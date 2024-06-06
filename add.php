@@ -22,6 +22,7 @@ $count = mysqli_num_rows($q );
 <body>
     <form action="ok.php" method="post">
         <input type="text" name="cat" >
+        <textarea name="detail" id=""></textarea>
         <button type="submit">Add</button>
     </form>
 

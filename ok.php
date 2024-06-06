@@ -1,8 +1,10 @@
 <?php
 require_once('config.php');
-$nom = (isset($_POST['cat']))?$_POST['cat']:NULL;
-$sql  = "INSERT INTO cat(id,nom) VALUES(NULL,'$nom')";
-$q = mysqli_query($connect,$sql);
-if($q) header('Location:list.php');
+require_once('functions.php');
+$ecoin['nom'] = (isset($_POST['cat']))?$_POST['cat']:NULL;
+$ecoin['detail'] = (isset($_POST['detail']))?$_POST['detail']:NULL;
+$v = add($ecoin);
+
+if($v==1) header('Location:list.php');
 
 ?>
