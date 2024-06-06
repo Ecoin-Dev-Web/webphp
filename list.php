@@ -43,6 +43,7 @@ echo '</pre>'; */
                 <td><?=$data['nom']   ?></td>
                 <td>
                     <a href="delete.php?q=<?=$data['id']   ?>">Delete</a>
+                    <a href="edit.php?q=<?=$data['id']   ?>">Edit</a>
                 </td>
             </tr>
             <?php endwhile;    ?>
