@@ -6,8 +6,8 @@ const PASSWORD = 'root';
 const DBNAME = 'ecoin';
 
 $connect = mysqli_connect(HOST,USER,PASSWORD,DBNAME);
-if($connect) echo "<h1  style='color:green'>Connected</h1>";
-else echo "<h1 style='color:red'>Not Connected</h1>";
+//if($connect) echo "<h1  style='color:green'>Connected</h1>";
+//else echo "<h1 style='color:red'>Not Connected</h1>";
 
 
 
