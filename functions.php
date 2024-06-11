@@ -50,6 +50,10 @@ return 0;
     }
 
 
+
+    function getCatById($id){
+        
+    }
     function getSize(){
         return  $_FILES['photo']['size'];
     }

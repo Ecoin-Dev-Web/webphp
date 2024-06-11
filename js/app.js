@@ -39,8 +39,13 @@ $(document).ready(function(){
                 data: fm,
                 success: function(rep,x){
                    console.log(rep,x);
-                   if(rep)  
-                    $(".msg").text("Add Ok").show(3000)
+                   if(rep){
+                    $(".msg").text("Add Ok").show(1000).toggle(1000)
+                    let h = setTimeout(function () {
+                     location.href = "listAjax.php"
+                },3000)
+                   }  
+                   
                   //  $(".data").text(rep)
                      },
               error:function(xhr,textStatus,errorTh){
@@ -128,3 +133,76 @@ Swal.fire({
     }
   });
 ****************************************************** */
+
+
+
+/***********************************/
+const myCat = document.getElementById('catModal')
+if (myCat) {
+  myCat.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const edit = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    const id = edit.getAttribute('data-id')
+    const nom = edit.getAttribute('data-nom')
+    const detail = edit.getAttribute('data-detail')
+    // If necessary, you could initiate an Ajax request here
+    // and then do the updating in a callback.
+  
+    // Update the modal's content.
+    const nomInput = myCat.querySelector('#nom')
+    const detailInput = myCat.querySelector('#detail')
+    const idInput = myCat.querySelector('#id')
+
+    nomInput.value = nom
+    detailInput.value = detail
+    idInput.value = id
+
+    //modalTitle.textContent = `New message to ${recipient}`
+    //modalBodyInput.value = recipient
+    let update = document.querySelector("#update")
+    update.addEventListener('click',function(){
+    
+         let data = {
+          nom:nomInput.value, 
+          detail:detailInput.value ,
+          id:idInput.value 
+         }
+         /****************Update with ajax****************** */
+         $.ajax({
+          url:'update.php',
+          type: 'post',
+          data: data,
+          success: function(rep,x){
+             console.log(rep,x);
+             if(rep){
+             // $(".msg").text("Update Ok").show(1000).toggle(1000)
+           /*  const myModal = new bootstrap.Modal(myCat, {
+  keyboard: false
+})
+myModal.toggle()*/
+
+          console.log(myCat);
+              let h = setTimeout(function () {
+            
+               location.href = "listAjax.php"
+          },2000)
+          toastr.error('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000})
+            
+        }  
+             
+            //  $(".data").text(rep)
+               },
+        error:function(xhr,textStatus,errorTh){
+                   console.log(xhr,textStatus,errorTh);
+               }
+
+      })
+         /************************************************* */
+
+
+    })
+  })
+}
+  
+ /**********************************/
