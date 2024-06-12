@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 
          // add Category By ajax
-         $('form').submit(function (event) {
+         $('#formCat').submit(function (event) {
             event.preventDefault()
             let cat = $('#cat').val()
             let text = $('#detail').val()
@@ -30,7 +30,7 @@ $(document).ready(function(){
            // let types = $('form').getAttr('method')
 
            // let fm = $('form').serialize()
-            let fm = $('form').serializeArray()
+            let fm = $('#formCat').serializeArray()
             console.log(fm);
 
             $.ajax({
@@ -173,8 +173,8 @@ if (myCat) {
           url:'update.php',
           type: 'post',
           data: data,
-          success: function(rep,x){
-             console.log(rep,x);
+          success: function(rep){
+           //  console.log(rep,x);
              if(rep){
              // $(".msg").text("Update Ok").show(1000).toggle(1000)
            /*  const myModal = new bootstrap.Modal(myCat, {
@@ -182,12 +182,13 @@ if (myCat) {
 })
 myModal.toggle()*/
 
-          console.log(myCat);
-              let h = setTimeout(function () {
-            
-               location.href = "listAjax.php"
-          },2000)
-          toastr.error('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000})
+          //console.log(myCat);
+             
+
+        let hh = setTimeout(function () {
+                   location.href = "listAjax.php"
+      },2000)
+         // toastr.error('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000})
             
         }  
              

@@ -23,7 +23,7 @@ $count = mysqli_num_rows($q );
 <div class="msg">
 
 </div>
-    <form action="ok.php" method="post">
+    <form action="ok.php" method="post" id="formCat">
         <input type="text" name="cat" id="cat" >
         <textarea name="detail" id="detail"></textarea>
         <button type="submit">Add</button>
